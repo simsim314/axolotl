@@ -1,5 +1,5 @@
-base_model: meta-llama/Llama-2-7b-hf
-base_model_config: meta-llama/Llama-2-7b-hf
+base_model: NousResearch/Llama-2-7b-hf
+base_model_config: NousResearch/Llama-2-7b-hf
 model_type: LlamaForCausalLM
 tokenizer_type: LlamaTokenizer
 is_llama_derived_model: true
@@ -9,8 +9,8 @@ load_in_4bit: true
 strict: false
 
 datasets:
-  - path: mhenrichsen/alpaca_2k_test
-    type: alpaca
+  - path: he_db.json
+    type: completion
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.01
 output_dir: ./qlora-out
@@ -21,7 +21,7 @@ lora_model_dir:
 sequence_len: 4096
 sample_packing: true
 
-lora_r: 32
+lora_r: 64
 lora_alpha: 16
 lora_dropout: 0.05
 lora_target_modules:
@@ -34,9 +34,9 @@ wandb_watch:
 wandb_run_id:
 wandb_log_model:
 
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 1
 micro_batch_size: 2
-num_epochs: 3
+num_epochs: 1
 optimizer: paged_adamw_32bit
 lr_scheduler: cosine
 learning_rate: 0.0002
@@ -57,7 +57,7 @@ flash_attention: true
 
 warmup_steps: 10
 eval_steps: 20
-save_steps:
+save_steps: 2500
 debug:
 deepspeed:
 weight_decay: 0.0
