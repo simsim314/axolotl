@@ -1,3 +1,7 @@
+# How to use
+
+Download [axolotl_finetune.ipynb](https://github.com/simsim314/axolotl/blob/main/axolotl_finetune.ipynb) and run.
+
 # Axolotl
 
 Axolotl is a tool designed to streamline the fine-tuning of various AI models, offering support for multiple configurations and architectures.
