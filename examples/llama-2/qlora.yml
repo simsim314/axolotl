@@ -1,5 +1,5 @@
-base_model: NousResearch/Llama-2-7b-hf
-base_model_config: NousResearch/Llama-2-7b-hf
+base_model: mistralai/Mistral-7B-v0.1
+base_model_config: mistralai/Mistral-7B-v0.1
 model_type: LlamaForCausalLM
 tokenizer_type: LlamaTokenizer
 is_llama_derived_model: true
@@ -9,7 +9,7 @@ load_in_4bit: true
 strict: false
 
 datasets:
-  - path: he_db.json
+  - path: DB_memory.json
     type: completion
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.01
@@ -35,11 +35,11 @@ wandb_run_id:
 wandb_log_model:
 
 gradient_accumulation_steps: 1
-micro_batch_size: 2
-num_epochs: 1
+micro_batch_size: 3
+num_epochs: 12
 optimizer: paged_adamw_32bit
 lr_scheduler: cosine
-learning_rate: 0.0002
+learning_rate: 0.0001
 
 train_on_inputs: false
 group_by_length: false
@@ -56,8 +56,8 @@ xformers_attention:
 flash_attention: true
 
 warmup_steps: 10
-eval_steps: 20
-save_steps: 2500
+eval_steps: 500
+save_steps: 500
 debug:
 deepspeed:
 weight_decay: 0.0
