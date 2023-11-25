@@ -6,13 +6,21 @@ Download [axolotl_finetune.ipynb](https://github.com/simsim314/axolotl/blob/main
  from axolotl run:
  
 !git clone https://github.com/ggerganov/llama.cpp.git
+
 !pip install -r llama.cpp/requirements.txt
+
 !python llama.cpp/convert.py merged/merged --outfile mistral-chess.gguf
+
 !mv mistral-chess.gguf llama.cpp/mistral-chess.gguf
+
 !cd llama.cpp
+
 !make
+
 !./quantize mistral-chess.gguf mistral-chess_q4_0.gguf q4_0
+
 !python scripts/finetune.py qlora-merge.yml --merge_lora --load_in_8bit=False --load_in_4bit=False
+
 
 # Axolotl
 
