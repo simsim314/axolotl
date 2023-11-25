@@ -4,7 +4,9 @@ Download [axolotl_finetune.ipynb](https://github.com/simsim314/axolotl/blob/main
 
 # How to merge + llama.cpp
  from axolotl run:
- 
+
+!python scripts/finetune.py qlora-merge.yml --merge_lora --load_in_8bit=False --load_in_4bit=False
+
 !git clone https://github.com/ggerganov/llama.cpp.git
 
 !pip install -r llama.cpp/requirements.txt
@@ -19,7 +21,6 @@ Download [axolotl_finetune.ipynb](https://github.com/simsim314/axolotl/blob/main
 
 !./quantize mistral-chess.gguf mistral-chess_q4_0.gguf q4_0
 
-!python scripts/finetune.py qlora-merge.yml --merge_lora --load_in_8bit=False --load_in_4bit=False
 
 
 # Axolotl
